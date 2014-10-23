@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Servicios uidcliente="<%= client_uid %>">
+  <Recogida codrecogida="">
+    <Horarios>
+      <Fecha dia="<%= date.strftime("%d/%m/%Y") %>">
+        <Horario desde="<%= time_from %>" hasta="<%= time_to %>" />
+      </Fecha>
+    </Horarios>
+    <RecogerEn>
+      <Nombre><%= name %></Nombre>
+      <Direccion><%= address %></Direccion>
+      <Poblacion><%= city %></Poblacion>
+      <Provincia><%= state %></Provincia>
+      <Pais><%= country_code %></Pais>
+      <CP><%= zipcode %></CP>
+      <Telefono><%= phone %></Telefono>
+      <Movil><%= mobile %></Movil>
+      <Email><%= email %></Email>
+    </RecogerEn>
+    <Referencias>
+      <Referencia tipo="C"><%= reference_number %></Referencia>
+    </Referencias>
+  </Recogida>
+</Servicios>
