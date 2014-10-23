@@ -1,6 +1,6 @@
 # Asm
 
-TODO: Write a gem description
+Integracion con el servicio de envío de ASM
 
 ## Installation
 
