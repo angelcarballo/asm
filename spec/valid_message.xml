@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
+  <soap12:Body>
+    <GrabaServicios  xmlns="http://www.asmred.com/">
+      <docIn>
+        <Servicios uidcliente="123456789">
+          <Recogida codrecogida="">
+            <Horarios>
+              <Fecha dia="12/07/2014">
+                <Horario desde="10:00" hasta="14:00" />
+              </Fecha>
+            </Horarios>
+            <RecogerEn>
+              <Nombre>Nombre</Nombre>
+              <Direccion>Direccion</Direccion>
+              <Poblacion>Ciudad</Poblacion>
+              <Provincia>Provincia</Provincia>
+              <Pais>28</Pais>
+              <CP>28000</CP>
+              <Telefono>915555555</Telefono>
+              <Movil>666666666</Movil>
+              <Email>test@example.com</Email>
+            </RecogerEn>
+            <Referencias>
+              <Referencia tipo="C">11223344556677889900</Referencia>
+            </Referencias>
+          </Recogida>
+        </Servicios>
+      </docIn>
+    </GrabaServicios>
+  </soap12:Body>
+</soap12:Envelope>
