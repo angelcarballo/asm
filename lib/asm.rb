@@ -1,5 +1,5 @@
 require "asm/version"
-require "asm/collection"
+require "asm/shipment"
 
 module Asm
 end

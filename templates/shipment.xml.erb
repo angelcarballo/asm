@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:asm="http://www.asmred.com/">
+  <soap:Header/>
+  <soap:Body>
+    <asm:GrabaServicios>
+      <asm:docIn>
+
+        <Servicios uidcliente="<%= client_uid %>" xmlns="http://www.asmred.com/">
+          <Envio codbarras="">
+            <Fecha><%= date.strftime("%d/%m/%Y") %></Fecha>
+            <Portes>P</Portes><!-- Prepaid -->
+            <Servicio>1</Servicio><!-- Curier -->
+            <Horario>3</Horario><!-- ASM24 -->
+            <Bultos><%= packages %></Bultos>
+            <Peso>4</Peso>
+            <Retorno>0</Retorno>
+            <Pod>N</Pod>
+            <Remite>
+              <Plaza></Plaza>
+              <Nombre><%= origin.name %></Nombre>
+              <Direccion><%= origin.address %></Direccion>
+              <Poblacion><%= origin.city %></Poblacion>
+              <Provincia><%= origin.state %></Provincia>
+              <Pais><%= origin.country_code %></Pais>
+              <CP><%= origin.zipcode %></CP>
+              <Telefono><%= origin.phone %></Telefono>
+              <Movil><%= origin.mobile %></Movil>
+              <Email><%= origin.email %></Email>
+              <Observaciones><%= origin.observations %></Observaciones>
+            </Remite>
+            <Destinatario>
+              <Codigo></Codigo>
+              <Plaza></Plaza>
+              <Nombre><%= destination.name %></Nombre>
+              <Direccion><%= destination.address %></Direccion>
+              <Poblacion><%= destination.city %></Poblacion>
+              <Provincia><%= destination.state %></Provincia>
+              <Pais><%= destination.country_code %></Pais>
+              <CP><%= destination.zipcode %></CP>
+              <Telefono><%= destination.phone %></Telefono>
+              <Movil><%= destination.mobile %></Movil>
+              <Email><%= destination.email %></Email>
+              <Observaciones><%= destination.observations %></Observaciones>
+              <ATT><%= destination.name %></ATT>
+            </Destinatario>
+            <Referencias> <!-- cualquier valor siempre distinto a cada prueba-->
+              <Referencia tipo="C"><%= reference_number %></Referencia>
+            </Referencias>
+            <Importes>
+              <Reembolso><%= reimbursement %></Reembolso>
+            </Importes>
+          </Envio>
+        </Servicios>
+
+      </asm:docIn>
+    </asm:GrabaServicios>
+  </soap:Body>
+</soap:Envelope>

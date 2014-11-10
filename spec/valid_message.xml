@@ -1,32 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
-  <soap12:Body>
-    <GrabaServicios  xmlns="http://www.asmred.com/">
-      <docIn>
-        <Servicios uidcliente="123456789">
-          <Recogida codrecogida="">
-            <Horarios>
-              <Fecha dia="12/07/2014">
-                <Horario desde="10:00" hasta="14:00" />
-              </Fecha>
-            </Horarios>
-            <RecogerEn>
-              <Nombre>Nombre</Nombre>
-              <Direccion>Direccion</Direccion>
-              <Poblacion>Ciudad</Poblacion>
-              <Provincia>Provincia</Provincia>
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:asm="http://www.asmred.com/">
+  <soap:Header/>
+  <soap:Body>
+    <asm:GrabaServicios>
+      <asm:docIn>
+
+        <Servicios uidcliente="123456789" xmlns="http://www.asmred.com/">
+          <Envio codbarras="">
+            <Fecha>12/07/2014</Fecha>
+            <Portes>P</Portes><!-- Prepaid -->
+            <Servicio>1</Servicio><!-- Curier -->
+            <Horario>3</Horario><!-- ASM24 -->
+            <Bultos>1</Bultos>
+            <Peso>4</Peso>
+            <Retorno>0</Retorno>
+            <Pod>N</Pod>
+            <Remite>
+              <Plaza></Plaza>
+              <Nombre>Origin Name</Nombre>
+              <Direccion>Origin Address</Direccion>
+              <Poblacion>Origin City</Poblacion>
+              <Provincia>Origin State</Provincia>
               <Pais>28</Pais>
               <CP>28000</CP>
               <Telefono>915555555</Telefono>
               <Movil>666666666</Movil>
-              <Email>test@example.com</Email>
-            </RecogerEn>
-            <Referencias>
+              <Email>origin@example.com</Email>
+              <Observaciones>Origin Observations</Observaciones>
+            </Remite>
+            <Destinatario>
+              <Codigo></Codigo>
+              <Plaza></Plaza>
+              <Nombre>Destination Name</Nombre>
+              <Direccion>Destination Address</Direccion>
+              <Poblacion>Destination City</Poblacion>
+              <Provincia>Destination State</Provincia>
+              <Pais>28</Pais>
+              <CP>28001</CP>
+              <Telefono>914444444</Telefono>
+              <Movil>666777888</Movil>
+              <Email>destination@example.com</Email>
+              <Observaciones>Destination Observations</Observaciones>
+              <ATT>Destination Name</ATT>
+            </Destinatario>
+            <Referencias> <!-- cualquier valor siempre distinto a cada prueba-->
               <Referencia tipo="C">11223344556677889900</Referencia>
             </Referencias>
-          </Recogida>
+            <Importes>
+              <Reembolso>17.45</Reembolso>
+            </Importes>
+          </Envio>
         </Servicios>
-      </docIn>
-    </GrabaServicios>
-  </soap12:Body>
-</soap12:Envelope>
+
+      </asm:docIn>
+    </asm:GrabaServicios>
+  </soap:Body>
+</soap:Envelope>
