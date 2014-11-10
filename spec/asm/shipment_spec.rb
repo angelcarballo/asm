@@ -1,41 +1,16 @@
 require 'Asm'
+require 'yaml'
 
 describe Asm::Shipment do
 
   it 'generates a valid template' do
-    valid_message = File.read(File.expand_path('../../valid_message.xml', __FILE__))
-    valid_message = valid_message.lines.map(&:strip).join
+    valid_options = YAML.load_file(File.expand_path('../../support/valid_shipment.xml', __FILE__))
+    valid_message = File.read(
+      File.expand_path('../../support/valid_shipment.xml', __FILE__)
+    ).lines.map(&:strip).join
+    debugger
 
-    collection = Asm::Shipment.new(
-      client_uid: '123456789',
-      date: Date.parse('12/07/2014'),
-      reference_number: '11223344556677889900',
-      reimbursement_cents: 1745,
-      origin: {
-        name: 'Origin Name',
-        address: 'Origin Address',
-        city: 'Origin City',
-        state: 'Origin State',
-        country_code: '28',
-        zipcode: '28000',
-        phone: '915555555',
-        mobile: '666666666',
-        email: 'origin@example.com',
-        observations: 'Origin Observations'
-      },
-      destination: {
-        name: 'Destination Name',
-        address: 'Destination Address',
-        city: 'Destination City',
-        state: 'Destination State',
-        country_code: '28',
-        zipcode: '28001',
-        phone: '914444444',
-        mobile: '666777888',
-        email: 'destination@example.com',
-        observations: 'Destination Observations'
-      },
-    )
+    collection = Asm::Shipment.new(valid_options)
 
     expect(collection.message).to eq(valid_message)
   end

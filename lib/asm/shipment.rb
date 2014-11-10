@@ -39,6 +39,14 @@ class Asm::Shipment
     reimbursement_cents.to_f / 100.0
   end
 
+  def formatted_date
+    if date.respond_to?(:strftime)
+      date.strftime("%d/%m/%Y")
+    else
+      date.to_s
+    end
+  end
+
 end
 
 class Address

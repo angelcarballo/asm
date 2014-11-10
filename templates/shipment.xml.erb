@@ -7,7 +7,7 @@
 
         <Servicios uidcliente="<%= client_uid %>" xmlns="http://www.asmred.com/">
           <Envio codbarras="">
-            <Fecha><%= date.strftime("%d/%m/%Y") %></Fecha>
+            <Fecha><%= formatted_date %></Fecha>
             <Portes>P</Portes><!-- Prepaid -->
             <Servicio>1</Servicio><!-- Curier -->
             <Horario>3</Horario><!-- ASM24 -->
