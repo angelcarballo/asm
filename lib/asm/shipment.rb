@@ -15,16 +15,16 @@ class Asm::Shipment
 
   SERVICES = {courier: 1, economy: 37, euro_standar: 54}
 
+  attr_reader *KEYS
   attr_reader :response
-  attr_accessor *KEYS
 
   def initialize(options = {})
     options = DEFAULT_KEYS.merge(options)
     KEYS.each do |key|
       instance_variable_set "@#{key}", options[key]
     end
-    @origin = Address.new(options[:origin])
-    @destination = Address.new(options[:destination])
+    @origin = Address.new options.delete(:origin)
+    @destination = Address.new options.delete(:destination)
     validate!
     return self
   end
@@ -47,7 +47,7 @@ class Asm::Shipment
   end
 
   ## Calculated Fields
-  
+
   def service_code
     SERVICES[service]
   end
@@ -68,9 +68,9 @@ class Asm::Shipment
 
   def validate!
     for key in MANDATORY_KEYS
-      raise InvalidConfig, "#{key} must be defined" unless public_send(key)
+      raise Asm::InvalidConfig, "#{key} must be defined" unless public_send(key)
     end
-    raise InvalidConfig, "#{key} is not valid" unless SERVICES.include? service
+    raise Asm::InvalidConfig, "#{key} is not valid" unless SERVICES.include? service
     origin.validate_for! service
     destination.validate_for! service
   end
@@ -95,6 +95,7 @@ class Address
   attr_reader *KEYS
 
   def initialize(options = {})
+    raise Asm::InvalidConfig, 'expected Hash for address options' unless options.is_a? Hash
     KEYS.each do |key|
       instance_variable_set "@#{key}", options[key]
     end
@@ -104,7 +105,7 @@ class Address
     keys_to_valide = MANDATORY_KEYS
     keys_to_valide << :mobile << :email if service == :euro_standar
     for key in keys_to_valide
-       raise InvalidConfig, "#{key} must be defined" unless public_send(key)
+       raise Asm::InvalidConfig, "#{key} must be defined" unless public_send(key)
     end
   end
 end
