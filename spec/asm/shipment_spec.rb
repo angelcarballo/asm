@@ -12,7 +12,7 @@ describe Asm::Shipment do
 
     collection = Asm::Shipment.new(valid_options)
 
-    expect(collection.message).to eq(valid_message)
+    expect(collection.send(:message)).to eq(valid_message)
   end
 
 end

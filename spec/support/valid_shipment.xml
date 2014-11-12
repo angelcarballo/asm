@@ -5,7 +5,7 @@
     <asm:GrabaServicios>
       <asm:docIn>
 
-        <Servicios uidcliente="123456789" xmlns="http://www.asmred.com/">
+        <Servicios uidcliente="6BAB7A53-3B6D-4D5A-9450-702D2FAC0B11" xmlns="http://www.asmred.com/">
           <Envio codbarras="">
             <Fecha>12/07/2014</Fecha>
             <Portes>P</Portes><!-- Prepaid -->

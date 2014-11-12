@@ -1,8 +1,9 @@
-:client_uid: '123456789'
+:client_uid: '6BAB7A53-3B6D-4D5A-9450-702D2FAC0B11'
 :date: '12/07/2014'
 :reference_number: '11223344556677889900'
+:service: :courier
 :reimbursement_cents: 1745
-:origin: 
+:origin:
   :name: 'Origin Name'
   :address: 'Origin Address'
   :city: 'Origin City'
