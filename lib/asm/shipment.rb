@@ -11,15 +11,13 @@ class Asm::Shipment
   OPTIONAL_KEYS = %i(packages reimbursement_cents)
   KEYS = MANDATORY_KEYS + OPTIONAL_KEYS
 
-  DEFAULT_KEYS = {packages: 1, date: Date.today}
-
   SERVICES = {courier: 1, economy: 37, euro_standar: 54}
 
   attr_reader *KEYS
   attr_reader :response
 
   def initialize(options = {})
-    options = DEFAULT_KEYS.merge(options)
+    options = default_options.merge(options)
     KEYS.each do |key|
       instance_variable_set "@#{key}", options[key]
     end
@@ -65,6 +63,12 @@ class Asm::Shipment
   end
 
   private
+
+  # Defaults to 1 package, today form the shipment date and current timestamp
+  # for a virtually always unique reference number
+  def default_options
+    {packages: 1, date: Date.today, reference_number: Time.now.to_i}
+  end
 
   def validate!
     for key in MANDATORY_KEYS
