@@ -14,7 +14,7 @@ class Asm::Shipment
   SERVICES = {courier: 1, economy: 37, euro_standar: 54}
 
   attr_reader *KEYS
-  attr_reader :response
+  attr_reader :response, :raw_response
 
   def initialize(options = {})
     options = default_options.merge(options)
