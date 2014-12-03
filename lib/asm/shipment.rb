@@ -36,7 +36,7 @@ class Asm::Shipment
     @raw_response.body[:graba_servicios_response][:graba_servicios_result][:servicios][:envio]
   end
 
-  def sucess?
+  def success?
     response[:resultado][:@return].to_i.zero?
   end
 
